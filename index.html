@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ClearLayer Systems — Crypto → Real Estate Settlement (Stealth)</title>
+  <meta name="description" content="ClearLayer Systems — building a compliant settlement bridge that lets buyers pay in crypto while sellers receive fiat. Early access & pilots for brokers, investors and partners." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta name="theme-color" content="#0b4cff" />
+
+  <!-- Minimal, self-contained styles -->
+  <style>
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --accent:#0b4cff;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #f6f9ff 0%, #eef6ff 100%);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    .site{max-width:1080px;margin:0 auto;padding:36px 20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3aa0ff);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;
+      box-shadow:0 6px 18px rgba(11,76,255,0.14);
+    }
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:14px}
+    nav a.cta{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(11,76,255,0.14)}
+    main{display:grid;grid-template-columns:1fr;gap:28px;margin-top:34px}
+    .hero{
+      display:flex;flex-direction:row;gap:28px;align-items:center;
+      padding:28px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(246,251,255,0.7));
+      box-shadow:0 8px 30px rgba(12,34,97,0.06);
+    }
+    .hero-left{flex:1;min-width:0}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:#e6f0ff;color:var(--accent);font-weight:600;font-size:13px}
+    h2{font-size:28px;margin:14px 0 10px}
+    p.lead{color:var(--muted);margin:0 0 18px;font-size:16px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
+    .btn.primary{background:var(--accent);color:white;box-shadow:0 6px 18px rgba(11,76,255,0.14)}
+    .btn.ghost{background:transparent;border:1px solid rgba(11,76,255,0.08);color:var(--accent)}
+    .hero-right{width:340px;border-radius:12px;padding:18px;background:linear-gradient(180deg,#fff, #f6fbff);box-shadow:0 6px 24px rgba(11,76,255,0.06)}
+    .metric{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .metric strong{font-size:20px}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(12,34,97,0.04)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .feature{padding:18px;border-radius:10px;background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid rgba(11,76,255,0.04)}
+    h3{margin:0 0 8px;font-size:18px}
+    ul{margin:0;padding-left:18px;color:var(--muted)}
+    footer{margin-top:34px;padding:18px 0;border-top:1px solid rgba(11,76,255,0.06);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+    .muted{color:var(--muted)}
+    /* responsive */
+    @media (max-width:880px){
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
+      .grid{grid-template-columns:1fr}
+    }
+    /* small utilities */
+    .small{font-size:13px;color:var(--muted)}
+    .pill{display:inline-block;padding:8px 10px;border-radius:999px;background:#eef6ff;color:var(--accent);font-weight:700}
+    .socials a{margin-left:8px;color:var(--muted);text-decoration:none}
+    .hidden{display:none}
+    .center{text-align:center}
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(6,10,25,0.5);display:flex;align-items:center;justify-content:center;z-index:80}
+    .modal{background:white;padding:20px;border-radius:12px;max-width:640px;width:92%;box-shadow:0 30px 60px rgba(2,6,23,0.35)}
+    .close{background:transparent;border:0;font-size:18px;cursor:pointer;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <a class="brand" href="#" aria-label="ClearLayer Systems (stealth)">
+        <div class="logo">CL</div>
+        <div>
+          <h1>ClearLayer Systems</h1>
+          <div class="small muted">Stealth — Crypto → Real Estate</div>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#why">Why now</a>
+        <a href="#team">Team</a>
+        <a class="cta" href="#" id="earlyAccessBtn">Get early access</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <span class="eyebrow">Stealth • Europe</span>
+          <h2>Bridge crypto liquidity to real estate — instantly, compliantly.</h2>
+          <p class="lead">Buyers want to pay in digital assets. Sellers want bank-settled fiat. Brokers need certainty. ClearLayer builds the settlement layer to connect them — safely, quickly and in line with European regulation.</p>
+
+          <div class="hero-cta">
+            <button class="btn primary" id="ctaPrimary">Request Beta Access</button>
+            <button class="btn ghost" id="ctaInvest">Investor info</button>
+          </div>
+
+          <div style="margin-top:18px" class="small muted">
+            Early interest: brokers in Spain, Portugal & UAE • Crypto buyers inbound • Founder: Raf Varone
+          </div>
+        </div>
+
+        <aside class="hero-right card">
+          <div class="metric"><div style="width:44px;height:44px;border-radius:10px;background:#eff6ff;display:inline-flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700">€</div><div><strong>€1T+</strong><div class="small muted">European property market (addressable)</div></div></div>
+          <div class="metric"><div style="width:44px;height:44px;border-radius:10px;background:#fff5e6;display:inline-flex;align-items:center;justify-content:center;color:#ff8a00;font-weight:700">₿</div><div><strong>100k+</strong><div class="small muted">Active crypto buyers (initial focus countries)</div></div></div>
+          <div style="height:10px"></div>
+          <div class="pill">Pilot invites open — limited</div>
+        </aside>
+      </section>
+
+      <section id="how" style="margin-top:18px">
+        <div class="card">
+          <h3>How it works — simple</h3>
+          <p class="small muted">A quick view of the settlement flow we pilot manually, then automate with APIs and regulated partners.</p>
+          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+            <div class="feature" style="flex:1;min-width:220px">
+              <h4 style="margin:0 0 8px">1) Buyer pays in crypto</h4>
+              <div class="small muted">Wallet → payment address / on-ramp</div>
+            </div>
+            <div class="feature" style="flex:1;min-width:220px">
+              <h4 style="margin:0 0 8px">2) Compliance checks</h4>
+              <div class="small muted">KYC/AML, source-of-funds, notary-ready docs</div>
+            </div>
+            <div class="feature" style="flex:1;min-width:220px">
+              <h4 style="margin:0 0 8px">3) Instant EUR settlement</h4>
+              <div class="small muted">Partner liquidity executes conversion; seller receives guaranteed EUR</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" style="margin-top:18px">
+        <div class="card">
+          <h3>Why now</h3>
+          <div class="grid" style="margin-top:12px">
+            <div class="feature">
+              <h3>MiCA & EU clarity</h3>
+              <p class="small muted">Regulatory alignment unlocks licensed rails.</p>
+            </div>
+            <div class="feature">
+              <h3>Cross-border demand</h3>
+              <p class="small muted">International buyers favor fast settlement and certainty.</p>
+            </div>
+            <div class="feature">
+              <h3>Institutional liquidity</h3>
+              <p class="small muted">OTC desks and partners can support large-ticket conversions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:18px">
+        <div class="card">
+          <h3>Early traction</h3>
+          <p class="small muted">Examples of validation signals we've collected:</p>
+          <ul style="margin-top:8px">
+            <li>20+ broker conversations (Spain, Portugal, Greece)</li>
+            <li>Direct inbound from crypto buyers in EU & MENA</li>
+            <li>Initial interest from liquidity partners and notary firms</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="team" style="margin-top:18px">
+        <div class="card">
+          <h3>Team & Roles</h3>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+            <div style="flex:1;min-width:210px">
+              <h4 style="margin:0">Raf Varone</h4>
+              <div class="small muted">Founder — fintech & proptech</div>
+            </div>
+            <div style="flex:1;min-width:210px">
+              <h4 style="margin:0">We are hiring</h4>
+              <div class="small muted">Technical co-founder • Payments engineer • Compliance advisor</div>
+            </div>
+            <div style="flex:1;min-width:210px">
+              <h4 style="margin:0">Get involved</h4>
+              <div class="small muted">Investors, brokers, partners — pilot slots limited</div>
+            </div>
+          </div>
+          <div style="margin-top:12px">
+            <button class="btn primary" id="btnBeta">Join Beta / Partner</button>
+            <button class="btn ghost" id="btnInvest">Request investor info</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="small muted">© ClearLayer Systems — Stealth Project • Built for pilots in EU</div>
+      <div>
+        <span class="small muted">Contact: </span>
+        <a class="small" href="mailto:you@yourmail.com">you@yourmail.com</a>
+        <span class="small muted"> • </span>
+        <a class="small" href="https://www.linkedin.com/in/raf-varone" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal for early access (simple) -->
+  <div id="modal" class="modal-backdrop hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Request Beta Access</strong>
+        <button class="close" id="closeModal" aria-label="close">✕</button>
+      </div>
+      <p class="small muted" style="margin-top:8px">Complete the short form to request early access. We'll follow up with next steps.</p>
+      <div style="margin-top:12px">
+        <!-- Replace the href below with your Google Form link -->
+        <a class="btn primary" id="openForm" href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" rel="noopener">Open Early Access Form</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // smooth scroll nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      })
+    });
+
+    function showModal(){ document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').setAttribute('aria-hidden','false'); }
+    function closeModal(){ document.getElementById('modal').classList.add('hidden'); document.getElementById('modal').setAttribute('aria-hidden','true'); }
+
+    document.getElementById('earlyAccessBtn').addEventListener('click', (e)=>{ e.preventDefault(); showModal(); })
+    document.getElementById('ctaPrimary').addEventListener('click', showModal)
+    document.getElementById('btnBeta').addEventListener('click', showModal)
+    document.getElementById('closeModal').addEventListener('click', closeModal)
+    document.getElementById('openForm').addEventListener('click', closeModal)
+
+    document.getElementById('ctaInvest').addEventListener('click', function(){
+      window.location.href = 'mailto:you@yourmail.com?subject=Investor%20info%20-%20Stealth%20project'
+    })
+    document.getElementById('btnInvest').addEventListener('click', function(){
+      window.location.href = 'mailto:you@yourmail.com?subject=Investor%20info%20-%20Stealth%20project'
+    })
+  </script>
+</body>
+</html>
