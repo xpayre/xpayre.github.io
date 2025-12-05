@@ -1,313 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bitotal — Crypto → Real Estate Payments (EU)</title>
-  <meta name="description" content="Bitotal: accept crypto for property sales. Licensed partners, escrow, KYC, and guaranteed fiat settlement for brokers, sellers and buyers." />
-  <meta name="theme-color" content="#08204A" />
-  <meta property="og:title" content="Bitotal — Crypto → Real Estate Payments (EU)" />
-  <meta property="og:description" content="Accept crypto for property sales — fast, compliant, auditable, and escrow-backed. Launching pilots in Greece & Cyprus." />
-  <meta property="og:image" content="assets/og-image.png" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/favicon.svg" />
-
-  <!-- Minimal CSS: single file, responsive, accessible -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paycre - EU Crypto SEPA Instant Payments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f6fbff; --card:#ffffff; --primary:#08204A; --accent:#00B57A; --muted:#556377;
-      --radius:14px; --max:1100px; --pad:20px; --mono:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
-      color-scheme: light;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--primary); -webkit-font-smoothing:antialiased}
-    a{text-decoration:none;color:var(--accent)}
-    .container{max-width:var(--max);margin:0 auto;padding:36px var(--pad)}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06406b);display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:800}
-    .brand h1{font-size:1.05rem;margin:0}
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{font-weight:600;color:var(--primary);opacity:0.9}
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start;margin-top:6px}
-    @media (max-width:980px){ .hero{grid-template-columns:1fr} }
-
-    .panel{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 10px 30px rgba(11,20,40,0.06)}
-    .kicker{display:inline-block;background:#e8fff4;color:#035033;padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.85rem}
-    h2{margin:8px 0 8px;font-size:1.6rem}
-    .lead{color:var(--muted);margin:0 0 14px;font-size:1.02rem}
-
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--accent);color:white;padding:12px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
-    .btn.ghost{background:transparent;color:var(--primary);border:1px solid rgba(8,32,74,0.06);font-weight:700}
-
-    .badge-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-    .badge{background:#fff;padding:8px 10px;border-radius:10px;border:1px solid rgba(8,32,74,0.04);font-weight:700;font-size:0.9rem;color:var(--muted)}
-
-    /* right column lead capture */
-    .lead-capture h3{margin:0 0 8px}
-    .price{font-size:1rem;font-weight:800;color:var(--primary)}
-    form{display:flex;flex-direction:column;gap:10px}
-    input,select,textarea{padding:12px;border-radius:10px;border:1px solid rgba(8,32,74,0.06);font-size:0.95rem}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    @media (max-width:560px){ .two{grid-template-columns:1fr} }
-
-    /* features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0}
-    @media (max-width:980px){ .features{grid-template-columns:1fr} }
-    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfeff);border:1px solid rgba(8,32,74,0.03)}
-    .feature h4{margin:0 0 8px}
-
-    /* steps */
-    .steps{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
-    .step{flex:1;min-width:180px;padding:12px;border-radius:10px;background:#fff;border:1px solid rgba(8,32,74,0.03)}
-
-    /* partners */
-    .partners{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .partner{background:#fff;padding:10px 12px;border-radius:10px;border:1px solid rgba(8,32,74,0.03);font-weight:700;font-size:0.9rem}
-
-    /* faq */
-    .faq{margin-top:22px}
-    .q{margin:12px 0}
-    .muted{color:var(--muted)}
-
-    footer{margin-top:30px;padding:24px 0;text-align:center;color:var(--muted);font-size:0.9rem}
-
-    /* small utilities */
-    .center{display:flex;gap:10px;align-items:center}
-    .download{background:transparent;border:1px dashed rgba(8,32,74,0.06);padding:10px;border-radius:10px}
-    .small{font-size:0.9rem}
+    body { font-family: 'Inter', sans-serif; margin:0; padding:0; color:#111827; background:#F3F4F6; }
+    header { background:#1D4ED8; color:white; padding:2rem; text-align:center; }
+    header h1 { font-size:2.5rem; margin-bottom:1rem; }
+    header p { font-size:1.2rem; margin-bottom:1.5rem; }
+    .cta { background:#F59E0B; color:white; padding:1rem 2rem; border:none; border-radius:8px; font-size:1rem; cursor:pointer; }
+    section { padding:4rem 2rem; text-align:center; }
+    .features { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+    .feature { background:white; padding:2rem; border-radius:12px; width:250px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    footer { background:#111827; color:white; padding:2rem; text-align:center; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true">B</div>
-        <div>
-          <h1>Bitotal</h1>
-          <div class="small muted">Crypto → Real Estate Payments (EU)</div>
-        </div>
+  <header>
+    <h1>Paycre</h1>
+    <p>The first EU-native crypto SEPA instant payment platform. Secure. Instant. Compliant.</p>
+    <button class="cta">Get Started</button>
+  </header>
+
+  <section>
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Instant Payments</h3>
+        <p>Move your money in seconds across Europe.</p>
       </div>
-
-      <nav aria-label="Main navigation">
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn ghost">Request Pilot</a>
-      </nav>
-    </header>
-
-    <main class="hero" role="main">
-      <section class="panel" aria-labelledby="hero-title">
-        <div class="kicker">Pilot: Greece & Cyprus</div>
-        <h2 id="hero-title">Accept crypto for property sales — legally, fast, and escrow-backed</h2>
-        <p class="lead">Bitotal coordinates crypto payments, licensed custody, KYC, and EUR settlement so agents and sellers receive fiat without touching crypto. Sell faster to cross-border crypto buyers.</p>
-
-        <div class="cta-row" style="margin-top:8px">
-          <button class="btn" id="ctaRequest">Request Pilot</button>
-          <a class="btn ghost" href="#how">See demo flow</a>
-        </div>
-
-        <div class="badge-row" aria-hidden="true">
-          <div class="badge">KYC / AML</div>
-          <div class="badge">Escrow-backed</div>
-          <div class="badge">EUR settlement</div>
-        </div>
-
-        <section style="margin-top:18px">
-          <h3 class="small">Why brokers choose Bitotal</h3>
-          <div class="features" role="list">
-            <article class="feature" role="listitem">
-              <h4>Zero custody for brokers</h4>
-              <p class="muted">We use regulated custodians — brokers never receive or hold crypto.</p>
-            </article>
-            <article class="feature" role="listitem">
-              <h4>Guaranteed fiat settlement</h4>
-              <p class="muted">Funds are converted by licensed partners and wired directly to the seller's bank account.</p>
-            </article>
-            <article class="feature" role="listitem">
-              <h4>Compliance-ready</h4>
-              <p class="muted">KYC, wallet screening, and source-of-funds reports included for notaries and banks.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="how" style="margin-top:8px">
-          <h3>How it works</h3>
-          <div class="steps" role="list">
-            <div class="step" role="listitem">
-              <strong>1. Buyer picks crypto</strong>
-              <div class="muted small">Buyer initiates payment (BTC/ETH/USDC) — invoice issued by licensed processor.</div>
-            </div>
-            <div class="step" role="listitem">
-              <strong>2. Custodial escrow</strong>
-              <div class="muted small">Crypto goes to a regulated custodian (Coinbase, BitGo, Fireblocks partner or lawyer multisig).</div>
-            </div>
-            <div class="step" role="listitem">
-              <strong>3. Legal + KYC</strong>
-              <div class="muted small">KYC + wallet provenance report provided to notary — contract locks EUR price at timestamp.</div>
-            </div>
-            <div class="step" role="listitem">
-              <strong>4. Convert & settle</strong>
-              <div class="muted small">Custodian or OTC partner converts to EUR and wires to seller's account; you provide receipts.</div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <!-- Right column: lead capture -->
-      <aside class="panel lead-capture" aria-label="Request pilot">
-        <h3>Request a pilot</h3>
-        <div class="muted small">First pilot listing free — qualifying properties only.</div>
-        <div style="margin:10px 0 12px">
-          <div class="price">Pilot fee: €0 (T&Cs apply)</div>
-        </div>
-
-        <!-- Formspree: replace action with your endpoint -->
-        <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
-          <label for="fullname">Full name</label>
-          <input id="fullname" name="name" type="text" required placeholder="Jane Doe" />
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" />
-
-          <label for="role">I am a</label>
-          <select id="role" name="role">
-            <option>Agent / Broker</option>
-            <option>Seller / Owner</option>
-            <option>Buyer / Investor</option>
-            <option>Developer</option>
-            <option>Other</option>
-          </select>
-
-          <label for="prop">Property or region</label>
-          <input id="prop" name="property" type="text" placeholder="Athens / Mykonos / Example property ID" />
-
-          <label for="message">Short message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell us about the deal or buyer..."></textarea>
-
-          <input type="hidden" name="_subject" value="Bitotal pilot request" />
-          <input type="hidden" name="_redirect" value="thanks.html" />
-
-          <button type="submit" class="btn">Request Pilot</button>
-        </form>
-
-        <p class="muted small" style="margin-top:10px">We partner with licensed custodians & law firms. Bitotal never holds client funds.</p>
-      </aside>
-    </main>
-
-    <!-- Pricing & offers -->
-    <section id="pricing" style="margin-top:22px;display:grid;grid-template-columns:1fr 300px;gap:18px">
-      <div class="panel">
-        <h3>Pricing (MVP)</h3>
-        <p class="muted small">Simple and transparent pricing tailored for pilot partners.</p>
-
-        <ul style="margin:10px 0 0; padding-left:18px">
-          <li><strong>Transaction fee:</strong> 2.5% (buyer)</li>
-          <li><strong>Escrow coordination:</strong> €1,000 per deal (standard)</li>
-          <li><strong>Agent subscription:</strong> €99/month (pilot)</li>
-          <li><strong>Seller onboarding:</strong> €300 (one-time)</li>
-        </ul>
-
-        <div style="margin-top:12px">
-          <h4>Why it's worth it</h4>
-          <p class="muted small">You're unlocking a new buyer pool, reducing time-to-close, and shifting custody risk to licensed partners.</p>
-        </div>
+      <div class="feature">
+        <h3>Crypto-to-Euro</h3>
+        <p>Seamless conversion for easy transactions.</p>
       </div>
-
-      <aside class="panel">
-        <h4>Pilot perks</h4>
-        <ul style="padding-left:18px;margin:10px 0 0">
-          <li>Dedicated onboarding specialist</li>
-          <li>Legal clause + notarization template</li>
-          <li>Priority conversion via OTC partner</li>
-        </ul>
-        <div style="margin-top:12px" class="center">
-          <button class="btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Claim pilot</button>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Partners -->
-    <section style="margin-top:18px">
-      <div class="panel">
-        <h3>Trusted partners</h3>
-        <p class="muted small">We integrate industry-standard custodians, analytics and legal partners.</p>
-        <div class="partners" role="list">
-          <div class="partner" role="listitem">Coinbase Custody</div>
-          <div class="partner" role="listitem">BitGo / Fireblocks</div>
-          <div class="partner" role="listitem">Chainalysis / TRM</div>
-          <div class="partner" role="listitem">Local notaries (Greece, Cyprus)</div>
-        </div>
+      <div class="feature">
+        <h3>Secure & Compliant</h3>
+        <p>Fully EU-regulated and GDPR compliant.</p>
       </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="panel faq" aria-labelledby="faq-title" style="margin-top:18px">
-      <h3 id="faq-title">FAQ</h3>
-
-      <div class="q">
-        <strong>Q: Will Bitotal hold my crypto?</strong>
-        <div class="muted">A: No. We never hold client funds. Crypto is held by a regulated custodian or lawyer-led multisig during escrow.</div>
+      <div class="feature">
+        <h3>Business Ready</h3>
+        <p>APIs for merchants and enterprises.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="q">
-        <strong>Q: What if crypto price moves?</strong>
-        <div class="muted">A: Contracts lock the EUR price at a defined timestamp (invoice time). Conversion is executed by the custodian/OTC partner to avoid volatility risk for the seller.</div>
-      </div>
+  <section>
+    <h2>How It Works</h2>
+    <p>Sign up → Connect bank & wallet → Send/receive instantly → Track transactions</p>
+  </section>
 
-      <div class="q">
-        <strong>Q: Is it legal in Greece?</strong>
-        <div class="muted">A: Yes — buyers and sellers can transact using crypto. Bitotal works with local lawyers to ensure compliance with KYC, AML and tax reporting.</div>
-      </div>
-
-      <div class="q">
-        <strong>Q: How fast is settlement?</strong>
-        <div class="muted">A: From payment confirmation to EUR wired to seller: typically same-day to 48 hours depending on OTC partner and banking hours.</div>
-      </div>
-    </section>
-
-    <!-- downloadable one-pager -->
-    <section style="margin-top:18px">
-      <div class="panel center" style="justify-content:space-between;align-items:center">
-        <div>
-          <strong>Download pilot one-pager</strong>
-          <div class="muted small">Share with brokers, sellers, and legal partners.</div>
-        </div>
-        <div>
-          <a class="download" href="assets/bitotal-onepager.pdf" download>Download PDF</a>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <strong>Bitotal</strong> — Crypto Real Estate Payments</div>
-      <div class="muted small" style="margin-top:6px">Legal: This MVP routes payments through licensed custodians and conversion partners. Bitotal is a coordinator and does not hold client funds.</div>
-    </footer>
-  </div>
-
-  <!-- Tiny JS for UX: scroll, form validation hint -->
-  <script>
-    // Scroll to form on CTA
-    document.getElementById('ctaRequest').addEventListener('click', function(){
-      document.getElementById('contactForm').scrollIntoView({behavior:'smooth', block:'center'});
-      document.getElementById('fullname').focus();
-    });
-
-    // Basic Formspree guidance if not set
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      var action = this.getAttribute('action') || '';
-      if(action.indexOf('formspree.io') === -1 && action.trim().length > 0){
-        // allow custom endpoint
-        return true;
-      }
-      if(action.indexOf('YOUR_FORMSPREE_ENDPOINT') !== -1 || action.trim() === ''){
-        e.preventDefault();
-        alert('Replace the form action with your Formspree endpoint (example: https://formspree.io/f/xxxxx) or configure your form handler.');
-      }
-    });
-  </script>
+  <footer>
+    <p>© 2025 Paycre | All rights reserved | <a href="#" style="color:#F59E0B;">Privacy Policy</a></p>
+  </footer>
 </body>
 </html>
